@@ -4,17 +4,20 @@ CompraTIC  Mintic2022
 
 INTEGRANTES DEL EQUIPO COMPRA TIC
 
+
 JAMES SILVA
 
-// Usar 8 y 9
+Estudiante de ingenieria de sistemas de la Universidad del cauca, resido en la ciudad de Popayan-Cauca y tengo 22 años.//
  
 JAIR SOLANO
 
-// Usar 12 y 13
+Ingeniero de Sistemas egresado de la UCC, vivo en la ciudad de Popayán del departamento del Cauca y me desempeño como Profesional de 
+Análisis Operativo en la Compañía Energética de Occidente desde hace 9 años.//
+
 
 LAURA MEJIA
 
-// Usar 16  y 17
+// Usar 19 y 20
 
 HECTOR MEJIA
 
@@ -25,3 +28,5 @@ para que asi, saquemos este proyecto adelante.
 MAURICIO SALAZAR 
 
 Estudiante de Ingenieria de sistemas | Con 10 años de experiencia en telecomunicaciones como tecnico RF |
+=======
+
