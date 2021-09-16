@@ -27,6 +27,8 @@ para que asi, saquemos este proyecto adelante.
 
 MAURICIO SALAZAR 
 
-Estudiante de Ingenieria de sistemas | Con 10 años de experiencia en telecomunicaciones como tecnico RF |
+Estudiante de Ingenieria de sistemas | Con 10 años de experiencia en telecomunicaciones como tecnico RF 
+
+||
 =======
 
