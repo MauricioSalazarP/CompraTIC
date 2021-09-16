@@ -1,1 +1,8 @@
+James
 Scrum master
+=======
+Jair
+Administrador de BD
+
+Mauricio 
+Analista
