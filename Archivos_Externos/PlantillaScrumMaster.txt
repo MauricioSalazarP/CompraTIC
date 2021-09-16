@@ -1,0 +1,22 @@
+// Nombres y Apellidos
+James Silva Bermúdez;Jair Alexander Molano;Mauricio Salazar;Hector Mejia Bueno;Laura Mejia Mosquera
+
+//numero de documento
+1061818950;76323116;1072189752;84089096;1146442703
+
+//correo electronico
+jfsilva@unicauca.edu.co;jmolanito@gmail.com;msalazarpa@unadvirtual.edu.co;hjosemejia@uniguajira.edu.co;lauramejia900@gmail.com
+
+//Nombre de equipo
+CompraTIC
+
+__________________________________________________________________________________________________________________________________
+
+Asignacion Sprint 1
+
+*   Scrum Master = James
+*   Administrador de BD = Jair
+*   Analista = Mauricio
+*   Desarrollador = Laura
+*   Product Owner =  Hector
+__________________________________________________________________________________________________________________________________
