@@ -20,3 +20,12 @@ Asignacion Sprint 1
 *   Desarrollador = Laura
 *   Product Owner =  Hector
 __________________________________________________________________________________________________________________________________
+
+Asignacion Sprint 2
+
+Desarrollador: James
+Analista: Jair
+Product Owner: Hector
+Admin BD: Laura
+Scrum master: Mauricio
+__________________________________________________________________________________________________________________________________
