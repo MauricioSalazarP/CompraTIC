@@ -15,7 +15,7 @@ Ingeniero de Sistemas egresado de la UCC, vivo en la ciudad de Popayán del depa
 Análisis Operativo en la Compañía Energética de Occidente desde hace 9 años.//
 
 
-LAURA MEJIA
+DIEGO TOBON
 
 // Usar 19 y 20
 
