@@ -227,7 +227,8 @@
     left: 0;
     padding: 1rem;
     background-color: #D0A2FE;
-    text-align: center
+    text-align: center;
+    text-decoration-color: #e4d4f5;
   }
 
   
@@ -246,9 +247,24 @@
     color: #eb85e6;
     background-color: #c8b2df00;
     border: none;
+    size: 30px;
+    
 }
 #addRow {
     color: #eb85e6;
-    background-color: #c8b2df00;
+    background-color: #c8b2df91;
     border: #eb85e6 ;
+    font-size: large;
+    border-radius: 10px;
+    transition-duration: 0.3s;
+    font-weight: bold;
+    -webkit-transition-duration: 00.3s;
+}
+
+#addRow:hover {
+    color: #a41ee2;
+    background-color: #9b5cdf91;
+    box-shadow: 1px 5px #e4d4f5;
+    cursor: pointer;
+    
 }

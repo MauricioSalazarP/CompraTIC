@@ -7,41 +7,32 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+
   overflow: hidden;
+  font-family: 'segoe ui';
 }
 
 header {
-  width: 100%;
-  height: 35px;
-  left: 0px;
-  top: 0px;
-  background: #8ef3ed;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: left;
+  height: 50px;
+  width: 100%;
+  background-color: #8ef3ed;
+  position: relative;
 }
 
 header h4 {
-  position: relative;
-  width: 100%;
-  height: 18px;
-  margin-left: 1090px;
-  top: 12px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 21px;
-  letter-spacing: 0.05em;
-  font-weight: 900;
-  color: #387894;
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
 }
 
 header img {
   position: relative;
   width: 32px;
   height: 30px;
-  margin-left: 1230px;
   margin-top: -15px;
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -52,10 +43,15 @@ section {
   width: 50vw;
   height: 70vh;
   left: 25vw;
-  top: 5vh;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  top: 10vh;
+  box-shadow: 0 0 15px rgba(79, 192, 212, 0.753);
   background: #ccf6ff;
-  border-radius: 20px;
+  border-radius: 15px;
+}
+section:hover{
+  box-shadow: 0 0 15px rgba(90, 117, 206, 0.753);
+  border-radius: 25px;
+
 }
 
 /* .contenido {
@@ -97,6 +93,7 @@ section {
   align-self: auto;
   align-items: center;
   text-align: center;
+  max-width: 100%;
 }
 
 .img img {
@@ -104,7 +101,7 @@ section {
 }
 
 form {
-  width: 360px;
+  width: 100%;
 }
 
 .contenido-login img {
@@ -117,7 +114,7 @@ form {
   color: #333;
   font-size: 2.9rem;
   margin-bottom: 20px;
-  border-bottom: 3px solid #d0a2fe;
+  border-bottom: 3px solid #9be4ee;
 }
 
 .contenido-login .input-div {
@@ -126,7 +123,7 @@ form {
   grid-template-columns: 7% 93%;
   margin: 25px 0;
   padding: 5px 0;
-  border-bottom: 2px solid #d4bebe;
+  border-bottom: 2px solid #9be4ee;
 }
 
 .contenido-login .input-div.usuario {
@@ -160,7 +157,7 @@ form {
   background: none;
   padding: 0.5rem 0.7rem;
   font-size: 1.3rem;
-  font-family: "Poppins", sans-serif;
+
 }
 
 .input-div.pass {
@@ -182,14 +179,13 @@ form {
   align-self: auto;
   width: 120%;
   height: 40px;
-  border-radius: 25px;
+  border-radius: 20px;
   outline: none;
   border: none;
-  background-image: linear-gradient(to right, #d0a2fe, #33ffdd, #c4c4c4);
+  background-image: linear-gradient(to right, #a5e9f5, #33ffdd, #c4c4c4);
   background-size: 200%;
   font-size: 1rem;
-  color: black;
-  font-family: "Poppins" sans-serif;
+  color: rgb(78, 76, 76);
   text-transform: uppercase;
   margin: 0.5rem;
   cursor: pointer;
@@ -206,14 +202,13 @@ form {
   align-self: auto;
   width: 90%;
   height: 40px;
-  border-radius: 25px;
+  border-radius: 20px;
   outline: none;
   border: none;
-  background-image: linear-gradient(to right, #d0a2fe, #33ffdd, #c4c4c4);
+  background-image: linear-gradient(to right, #a5e9f5, #33ffdd, #c4c4c4);
   background-size: 200%;
   font-size: 1rem;
-  color: black;
-  font-family: "Poppins" sans-serif;
+  color: rgb(37, 36, 36);
   text-transform: uppercase;
   margin: 0.5rem;
   cursor: pointer;
@@ -234,17 +229,5 @@ footer {
   text-align: center
 }
 
-footer h5 {
-  position: relative;
-  width: 100%;
-  height: 18px;
-  top: 12px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 21px;
-  letter-spacing: 0.05em;
-  font-weight: 900;
-  color: #387894;
-}
+
+
