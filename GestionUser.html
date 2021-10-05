@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion De Usuarios</title>
+    <link rel="stylesheet" href="./CSS/UserCSS.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="JS/User.js"></script>
+
+</head>
+<body>
+      <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+          <div class="nav-title">
+            CompraTIC
+            <i class="fas fa-tools">Admon</i>
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+
+        <div class="nav-links">
+          
+          <a href="#">INICIO</a>
+          <a href="#">PRODUCTOS</a>
+          <a href="#">VENTAS</a>
+          <a href="#">USUARIOS</a>
+          <a href="./login.html">Logout</a>
+        </div>
+      </div>
+
+      <div class="sample one">
+        <input type="text" name="search" placeholder="search">
+        <button type="submit" class="btn btn-search fa fa-search"></button>
+      </div>
+      
+
+      <div class="container">
+        <table class="tableContents">
+          <tr>
+            <th id="IDCol">User ID</th>
+            <th id="firstnameCol" contenteditable="false">Nombre</th>
+            <th id="lastnameCol" contenteditable="false">Apellido</th>
+            <th id="ageCol" contenteditable="false">Edad</th>
+            <th id="genderCol" contenteditable="false">Perfil</th>
+            <th id="heightCol" contenteditable="false">Fecha Ingreso</th>
+            <th id="additionalnotesCol" contenteditable="false">Notas</th>
+          </tr>
+          <tr>
+            <td class="idRow" contenteditable="false">1</td>
+            <td contenteditable="false">A1</td>
+            <td contenteditable="false">A2</td>
+            <td contenteditable="false">A3</td>
+            <td contenteditable="false">A4</td>
+            <td contenteditable="false">A5</td>
+            <td contenteditable="false">-</td>  
+          </tr>
+          <tr>
+            <td class="idRow" contenteditable="false">2</td>
+            <td contenteditable="false">B1</td>
+            <td contenteditable="false">B2</td>
+            <td contenteditable="false">B3</td>
+            <td contenteditable="false">B4</td>
+            <td contenteditable="false">B5</td>
+            <td contenteditable="false">-</td>
+          </tr>
+          <tr>
+            <td class="idRow" contenteditable="false">3</td>
+            <td contenteditable="false">C1</td>
+            <td contenteditable="false">C2</td>
+            <td contenteditable="false">C3</td>
+            <td contenteditable="false">C4</td>
+            <td contenteditable="false">C5</td>
+            <td contenteditable="false">-</td>
+          </tr>
+          <tr>
+            <td class="idRow" contenteditable="false">4</td>
+            <td contenteditable="false">D1</td>
+            <td contenteditable="false">D2</td>
+            <td contenteditable="false">D3</td>
+            <td contenteditable="false">D4</td>
+            <td contenteditable="false">D5</td>
+            <td contenteditable="false">-</td>
+          </tr>
+          <tr id="bottomRow Row5">
+            <td class="idRow" contenteditable="false">5</td>
+            <td contenteditable="false">E1</td>
+            <td contenteditable="false">E2</td>
+            <td contenteditable="false">E3</td>
+            <td contenteditable="false">E4</td>
+            <td contenteditable="false">E5</td>
+            <td contenteditable="false">-</td>
+          </tr>
+        </table>
+        <br>
+        <button id="addRow">Crear Usuario</button>
+      </div>
+      
+    
+    <footer>
+        <div>CompraTIC</div>
+    </footer>
+</body>
+</html>
