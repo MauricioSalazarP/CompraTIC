@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion ventas</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2? family = Poppins: wght @ 700 & display = swap" rel="hoja de estilo">
+  <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/ventas.css">
+  <link rel="stylesheet" href="css/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/css/all.min.css">
+
+</head>
+
+<body>
+
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Editar una venta</p>
+      <div class="contenedor-tabla">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">ID venta</th>
+              <th scope="col">Valor total</th>
+              <th scope="col">ID Producto</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio C/U</th>
+              <th scope="col">Fecha Venta</th>
+              <th scope="col">ID Cliente</th>
+              <th scope="col">Nombre Cliente</th>
+              <th scope="col">ID Vendedor</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>$5999</td>
+              <td>2</td>
+              <td>1</td>
+              <td>$5999</td>
+              <td>XX/XX/XXX</td>
+              <td>132016501</td>
+              <td>Pedro</td>
+              <td>2564132</td>
+              <td>Proceso</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="CREAR" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Editar una venta</p>
+      <div class="contenedor-tabla">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">ID venta</th>
+              <th scope="col">Valor total</th>
+              <th scope="col">ID Producto</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio C/U</th>
+              <th scope="col">Fecha Venta</th>
+              <th scope="col">ID Cliente</th>
+              <th scope="col">Nombre Cliente</th>
+              <th scope="col">ID Vendedor</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--Navbar -->
+  <nav class="navbar navbar-expand-sm navbar-light menu" role="navigation">
+    <div class="container-fluid contenedor">
+
+      <div class="collapse navbar-collapse" id="navbarsExample03">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav navbar-left">
+            <li class="nav-item">
+              <h2 class="nav-link compratic">CompraTIC</h2>
+            </li>
+            <li class="nav-item">
+              <img src="imagen/las-compras-en-linea.png" alt="" class="img">
+            </li>
+          </ul>
+          <li class="nav navbar-nav navbar-center">
+            <a class="nav-link active" aria-current="page" href="./vendedorVentas.html">VENTAS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./login.html">Cerrar Sesión</a>
+          </li>
+          <!-- Aquí se colocan los nombres del menu que se desea tener -->
+          <!-- 
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Iniciar Sesión</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link disabled">Disabled</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                          <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                              <li><a class="dropdown-item" href="#">Action</a></li>
+                              <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                          </ul>
+                      </li>
+                  </li> -->
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="centrar">
+    <input id="btninfo" type="button" value="GETION VENTAS">
+  </div>
+  <div class="custom-select " style="width:200px;">
+    <select class="contenedor-tabla">
+      <option value="0">Select Product:</option>
+      <option value="1">Computadores</option>
+      <option value="2">Diademas</option>
+      <option value="3">Software</option>
+      <option value="4">Disco Duro</option>
+      <option value="5">Playstation</option>
+      <option value="6">Portatil</option>
+      <option value="7">Impresora</option>
+      <option value="8">Teclado</option>
+      <option value="9">Celular</option>
+      <option value="10">Mouse</option>
+      <option value="11">PC's</option>
+      <option value="12">USB</option>
+    </select>
+    
+  </div>
+  <div class="centrar" style=" padding-top: 5px;">
+    <input id="btnagregar" type="button" value="AGREGAR">
+  </div>
+  <div class="contenedor-tabla">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">ID venta</th>
+          <th scope="col">Valor total</th>
+          <th scope="col">ID Producto</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Precio C/U</th>
+          <th scope="col">Fecha Venta</th>
+          <th scope="col">ID Cliente</th>
+          <th scope="col">Nombre Cliente</th>
+          <th scope="col">ID Vendedor</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Editar</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>$5999</td>
+          <td>2</td>
+          <td>1</td>
+          <td>$5999</td>
+          <td>XX/XX/XXX</td>
+          <td>132016501</td>
+          <td>Pedro</td>
+          <td>2564132</td>
+          <td>Proceso</td>
+          <td>
+            <button type="submit" id="myBtn"><img src="imagen/editar.png" alt="x" width="15" height="15"></button>
+            <button type="submit"><img src="imagen/delete.png" alt="x" width="15" height="15"></button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>$5999</td>
+          <td>2</td>
+          <td>1</td>
+          <td>$5999</td>
+          <td>XX/XX/XXX</td>
+          <td>132016501</td>
+          <td>Pedro</td>
+          <td>2564132</td>
+          <td>Proceso</td>
+          <td>
+            <button type="submit" id="myBtn"><img src="imagen/editar.png" alt="x" width="15" height="15"></button>
+            <button type="submit"><img src="imagen/delete.png" alt="x" width="15" height="15"></button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>$5999</td>
+          <td>2</td>
+          <td>1</td>
+          <td>$5999</td>
+          <td>XX/XX/XXX</td>
+          <td>132016501</td>
+          <td>Pedro</td>
+          <td>2564132</td>
+          <td>Proceso</td>
+          <td>
+            <button type="submit" id="myBtn"><img src="imagen/editar.png" alt="x" width="15" height="15"></button>
+            <button type="submit"><img src="imagen/delete.png" alt="x" width="15" height="15"></button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>$5999</td>
+          <td>2</td>
+          <td>1</td>
+          <td>$5999</td>
+          <td>XX/XX/XXX</td>
+          <td>132016501</td>
+          <td>Pedro</td>
+          <td>2564132</td>
+          <td>Proceso</td>
+          <td>
+            <button type="submit" id="myBtn"><img src="imagen/editar.png" alt="x" width="15" height="15"></button>
+            <button type="submit"><img src="imagen/delete.png" alt="x" width="15" height="15"></button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>$5999</td>
+          <td>2</td>
+          <td>1</td>
+          <td>$5999</td>
+          <td>XX/XX/XXX</td>
+          <td>132016501</td>
+          <td>Pedro</td>
+          <td>2564132</td>
+          <td>Proceso</td>
+          <td>
+            <button type="submit" id="myBtn"><img src="imagen/editar.png" alt="x" width="15" height="15"></button>
+            <button type="submit"><img src="imagen/delete.png" alt="x" width="15" height="15"></button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>$5999</td>
+          <td>2</td>
+          <td>1</td>
+          <td>$5999</td>
+          <td>XX/XX/XXX</td>
+          <td>132016501</td>
+          <td>Pedro</td>
+          <td>2564132</td>
+          <td>Proceso</td>
+          <td>
+            <button type="submit" id="myBtn"><img src="imagen/editar.png" alt="x" width="15" height="15"></button>
+            <button type="submit"><img src="imagen/delete.png" alt="x" width="15" height="15"></button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td>$5999</td>
+          <td>2</td>
+          <td>1</td>
+          <td>$5999</td>
+          <td>XX/XX/XXX</td>
+          <td>132016501</td>
+          <td>Pedro</td>
+          <td>2564132</td>
+          <td>Proceso</td>
+          <td>
+            <button type="submit" id="myBtn"><img src="imagen/editar.png" alt="x" width="15" height="15"></button>
+            <button type="submit"><img src="imagen/delete.png" alt="x" width="15" height="15"></button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td>$5999</td>
+          <td>2</td>
+          <td>1</td>
+          <td>$5999</td>
+          <td>XX/XX/XXX</td>
+          <td>132016501</td>
+          <td>Pedro</td>
+          <td>2564132</td>
+          <td>Proceso</td>
+          <td>
+            <button type="submit" id="myBtn"><img src="imagen/editar.png" alt="x" width="15" height="15"></button>
+            <button type="submit"><img src="imagen/delete.png" alt="x" width="15" height="15"></button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <!--Footer -->
+  <footer>
+    <h5>CompraTIC @2021</h5>
+  </footer>
+  <!--/.Footer -->
+
+  <script src="JS/ventas.js"></script>
+  <!-- Bootstrap 5 -->
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap.min.js"></script> -->
+  
+</body>
+
+</html>

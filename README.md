@@ -9,7 +9,7 @@ JAMES SILVA
 
 Estudiante de ingenieria de sistemas de la Universidad del cauca, resido en la ciudad de Popayan-Cauca y tengo 22 años.//
  
-JAIR SOLANO
+JAIR MOLANO
 
 Ingeniero de Sistemas egresado de la UCC, vivo en la ciudad de Popayán del departamento del Cauca y me desempeño como Profesional de 
 Análisis Operativo en la Compañía Energética de Occidente desde hace 9 años.//
@@ -17,7 +17,7 @@ Análisis Operativo en la Compañía Energética de Occidente desde hace 9 años
 
 LAURA MEJIA
 
-// Usar 19 y 20
+Mi nombre es Diego Alejandro Tobon Henao, soy estudiante de ingeniería de sistemas y computación en la universidad de Caldas, técnico en programación de software y técnico en sistemas, actualmente trabajo como desarrollador backend en PRAGMA.
 
 HECTOR MEJIA
 
@@ -27,6 +27,7 @@ para que asi, saquemos este proyecto adelante.
 
 MAURICIO SALAZAR 
 
-Estudiante de Ingenieria de sistemas | Con 10 años de experiencia en telecomunicaciones como tecnico RF |
-=======
+Estudiante de Ingenieria de sistemas | Con 10 años de experiencia en telecomunicaciones como tecnico RF 
+
+
 
