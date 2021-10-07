@@ -15,7 +15,7 @@ Ingeniero de Sistemas egresado de la UCC, vivo en la ciudad de Popayán del depa
 Análisis Operativo en la Compañía Energética de Occidente desde hace 9 años.//
 
 
-LAURA MEJIA
+Diego Tobon
 
 Mi nombre es Diego Alejandro Tobon Henao, soy estudiante de ingeniería de sistemas y computación en la universidad de Caldas, técnico en programación de software y técnico en sistemas, actualmente trabajo como desarrollador backend en PRAGMA.
 
