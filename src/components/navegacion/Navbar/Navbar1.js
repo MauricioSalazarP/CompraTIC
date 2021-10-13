@@ -14,7 +14,7 @@ const Navbar1 = ({ value, attribute }) => {
                   <li className="nav-item">
                       <Link to="#"> 
                         <h2 className="nav-link compratic">CompraTic</h2>
-                        <img src={Logo} className="img" />
+                        <img  alt = "" src={Logo} className="img" />
                       </Link>
                       
                   </li>

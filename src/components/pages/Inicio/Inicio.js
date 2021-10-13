@@ -55,7 +55,7 @@ const Inicio = () => {
 
                         <div className="col-lg-3 col-md-6 portfolio-item filter-web">
                             <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
-                                <img src={ productImages('./discoduro.png') } className="img-fluid" alt="" />
+                                <img src={ productImages('./discodur.png') } className="img-fluid" alt="" />
                             </div>
                             <div className="portfolio-info">
                                 <h4>Disco Duro</h4>
