@@ -3,58 +3,105 @@ import "./usuarios.css"
 import Footer from '../../navegacion/Footer/Footer';
 import Navbar1 from '../../navegacion/Navbar/Navbar1';
 import { Link } from 'react-router-dom'
-import $ from "jquery"
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  Table,
+  Button,
+  Container,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  FormGroup,
+  ModalFooter,
+} from "reactstrap";
 
+const data = [
+  { id: 1, nombre: "Mauricio", rol: "Administrador", correo: "mauricio@compratic.com"   },
+  { id: 2, nombre: "James", rol: "Vendedor", correo: "james@compratic.com" },
+  { id: 3, nombre: "Hector", rol: "Administrador", correo: "hector@compratic.com" },
+  { id: 4, nombre: "Diego", rol: "Vendedor", correo: "diego@compratic.com" },
+  { id: 5, nombre: "Jair", rol: "vendedor", correo : "jair@compratic.com"},
+  { id: 6, nombre: "edinson", rol: "Administrador", correo : "jair@mintic.com" },
+];
 
-const Users = () => {
-    $(Document).ready(function() {
+class Users extends React.Component {
+  state = {
+    data: data,
+    modalActualizar: false,
+    modalInsertar: false,
+    form: {
+      id: "",
+      nombre: "",
+      rol: "",
+    },
+  };
 
-        $("tr:first-child").append('<th class="actionsCol" contenteditable="false">Actions</th>');
-        $("tr:not(:first-child)").append('<td class="finalActionsCol"><i class="fa fa-plus-circle" aria-hidden="true"></i> <i class="fa fa-minus-circle" aria-hidden="true"></i> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </td>');
-      
-        $("table").on("click", ".fa-plus-circle", function() {
-          $(this).closest('tr').after('<tr><td class="idRow" contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td class="finalActionsCol"><i class="fa fa-plus-circle" aria-hidden="true"></i> <i class="fa fa-minus-circle" aria-hidden="true"></i> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </td></tr>');
-        });
-      
-        $("#addRow").on("click", function() {
-          $("table").append('<tr><td class="idRow" contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td class="finalActionsCol"><i class="fa fa-plus-circle" aria-hidden="true"></i> <i class="fa fa-minus-circle" aria-hidden="true"></i> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </td></tr>');
-        });
-      
-        $("table").on("click", ".fa-minus-circle", function() {
-          if (prompt("Estas seguro de Borrar el Usuario? escribe 'y' para confirmar") == "y") {
-            $(this).closest('tr').remove();
-          } else {}
-        });
-      
-        $("table").on("click", ".fa-pencil-square-o, .fa-floppy-o", function() {
-          var thisRow = $(this).parent().siblings();
-          var editOn = $(this).hasClass("editMode");
-      
-          $('td:last-child').attr('contenteditable', 'false');
-          $('td:last-child').css('background-color', 'transparent');
-      
-          if (editOn == false) {
-            $(thisRow).attr('contenteditable', 'true');
-            $(thisRow).css('background-color', '#ffc9c9');
-            $(this).removeClass("fa-pencil-square-o");
-            $(this).addClass("fa-floppy-o editMode");
-          } else if (editOn == true) {
-            $(thisRow).attr('contenteditable', 'false');
-            $(thisRow).css('background-color', 'transparent');
-            $(this).removeClass("fa-floppy-o editMode");
-            $(this).addClass("fa-pencil-square-o");
-          }
-        });
-      
-        $('th', this).dblclick(function() {
-          $(this).attr("contenteditable", "true");
-        });
-        $('th', this).mouseout(function() {
-          $(this).attr("contenteditable", "false");
-        });
-      
+  mostrarModalActualizar = (dato) => {
+    this.setState({
+      form: dato,
+      modalActualizar: true,
+    });
+  };
+
+  cerrarModalActualizar = () => {
+    this.setState({ modalActualizar: false });
+  };
+
+  mostrarModalInsertar = () => {
+    this.setState({
+      modalInsertar: true,
+    });
+  };
+
+  cerrarModalInsertar = () => {
+    this.setState({ modalInsertar: false });
+  };
+
+  editar = (dato) => {
+    var contador = 0;
+    var arreglo = this.state.data;
+    arreglo.map((registro) => {
+      if (dato.id === registro.id) {
+        arreglo[contador].nombre = dato.nombre;
+        arreglo[contador].rol = dato.rol;
+      }
+      contador++;
+    });
+    this.setState({ data: arreglo, modalActualizar: false });
+  };
+
+  eliminar = (dato) => {
+    var opcion = window.confirm("Estás Seguro que deseas Eliminar el elemento "+dato.id);
+    if (opcion === true) {
+      var contador = 0;
+      var arreglo = this.state.data;
+      arreglo.map((registro) => {
+        if (dato.id === registro.id) {
+          arreglo.splice(contador, 1);
+        }
+        contador++;
       });
-    
+      this.setState({ data: arreglo, modalActualizar: false });
+    }
+  };
+
+  insertar= ()=>{
+    var valorNuevo= {...this.state.form};
+    valorNuevo.id=this.state.data.length+1;
+    var lista= this.state.data;
+    lista.push(valorNuevo);
+    this.setState({ modalInsertar: false, data: lista });
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+    render(){
     return (
         <div>
             <div>
@@ -69,88 +116,206 @@ const Users = () => {
                 to3: '/productoAdmin',
                 to4: '/',
             }}/>  
-            </div>  
-            <div className="sample one horizontal caja1">
+        </div>  
 
-                <input type="text" name="search" placeholder="search"/>
-        
-            </div>
-         <div className="dropdown horizontal caja2">
+        <div className="sample one horizontal caja1">
+                <input type="text" name="search" placeholder="search"/>       
+        </div>
+
+        <div className="dropdown horizontal caja2">
           <button className="algo btn btn-success btn-search btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Consulta
-          </button>
+          Consulta
+        </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><Link className="dropdown-item" to="#">ID Usuario</Link></li>
             <li><Link className="dropdown-item" to="#">Nombre</Link></li>
             <li><Link className="dropdown-item" to="#">Rol</Link></li>
           </div>
         </div>
+        
             
 
-            <div class="containerUser">
-                <table class="tableContents">
-                <tr>
-                    <th id="IDCol">User ID</th>
-                    <th id="firstnameCol" contenteditable="false">Nombre</th>
-                    <th id="lastnameCol" contenteditable="false">Apellido</th>
-                    <th id="ageCol" contenteditable="false">Edad</th>
-                    <th id="genderCol" contenteditable="false">Perfil</th>
-                    <th id="heightCol" contenteditable="false">Fecha Ingreso</th>
-                    <th id="additionalnotesCol" contenteditable="false">Notas</th>
+        <div class="container">              
+        <Container>
+
+          <br />
+          <br />
+          <Table hover responsive bordered   value={{ background: '#D0A2FE' }}>
+            <thead>
+              <tr>
+                <th>ID Usuario</th>
+                <th>Nombre</th>
+                <th>Rol</th>
+                <th>Correo</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {this.state.data.map((dato) => (
+                <tr key={dato.id}>
+                  <td>{dato.id}</td>
+                  <td>{dato.nombre}</td>
+                  <td>{dato.rol}</td>
+                  <td>{dato.correo}</td> 
+                  <td>
+                    <Button
+                      color="secondary"
+                      onClick={() => this.mostrarModalActualizar(dato)}
+                    >
+                      Editar
+                    </Button>{" "}
+                    <Button color="danger" onClick={()=> this.eliminar(dato)}>Eliminar</Button>
+                  </td>
                 </tr>
-                <tr>
-                    <td class="idRow" contenteditable="false">1</td>
-                    <td contenteditable="false">A1</td>
-                    <td contenteditable="false">A2</td>
-                    <td contenteditable="false">A3</td>
-                    <td contenteditable="false">A4</td>
-                    <td contenteditable="false">A5</td>
-                    <td contenteditable="false">-</td>  
-                </tr>
-                <tr>
-                    <td class="idRow" contenteditable="false">2</td>
-                    <td contenteditable="false">B1</td>
-                    <td contenteditable="false">B2</td>
-                    <td contenteditable="false">B3</td>
-                    <td contenteditable="false">B4</td>
-                    <td contenteditable="false">B5</td>
-                    <td contenteditable="false">-</td>
-                </tr>
-                <tr>
-                    <td class="idRow" contenteditable="false">3</td>
-                    <td contenteditable="false">C1</td>
-                    <td contenteditable="false">C2</td>
-                    <td contenteditable="false">C3</td>
-                    <td contenteditable="false">C4</td>
-                    <td contenteditable="false">C5</td>
-                    <td contenteditable="false">-</td>
-                </tr>
-                <tr>
-                    <td class="idRow" contenteditable="false">4</td>
-                    <td contenteditable="false">D1</td>
-                    <td contenteditable="false">D2</td>
-                    <td contenteditable="false">D3</td>
-                    <td contenteditable="false">D4</td>
-                    <td contenteditable="false">D5</td>
-                    <td contenteditable="false">-</td>
-                </tr>
-                <tr id="bottomRow Row5">
-                    <td class="idRow" contenteditable="false">5</td>
-                    <td contenteditable="false">E1</td>
-                    <td contenteditable="false">E2</td>
-                    <td contenteditable="false">E3</td>
-                    <td contenteditable="false">E4</td>
-                    <td contenteditable="false">E5</td>
-                    <td contenteditable="false">-</td>
-                </tr>
-                </table>
-                
-                <button id="addRow">Crear Usuario</button>
-            </div>
-            <Footer value={{ background: '#D0A2FE' }} />
+              ))}
+            </tbody>
+          </Table>
+          <br />
+          <Button color="success" onClick={()=>this.mostrarModalInsertar()}>Crear Usuario</Button>
+        </Container>
+
+        <Modal isOpen={this.state.modalActualizar}>
+          <ModalHeader>
+           <div><h3>Editar Registro</h3></div>
+          </ModalHeader>
+
+          <ModalBody>
+            <FormGroup>
+              <label>
+               Id:
+              </label>
+            
+              <input
+                className="form-control"
+                readOnly
+                type="text"
+                value={this.state.form.id}
+              />
+            </FormGroup>
+            
+            <FormGroup>
+              <label>
+                Usuario: 
+              </label>
+              <input
+                className="form-control"
+                name="nombre"
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.form.nombre}
+              />
+            </FormGroup>
+            
+            <FormGroup>
+              <label>
+                Correo: 
+              </label>
+              <input
+                className="form-control"
+                name="correo"
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.form.correo}
+              />
+            </FormGroup>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button
+              color="info"
+              onClick={() => this.editar(this.state.form)}
+            >
+              Editar
+            </Button>
+            <Button
+              color="danger"
+              onClick={() => this.cerrarModalActualizar()}
+            >
+              Cancelar
+            </Button>
+          </ModalFooter>
+        </Modal>
+
+
+
+        <Modal isOpen={this.state.modalInsertar}>
+          <ModalHeader>
+           <div><h3>Insertar Usuario</h3></div>
+          </ModalHeader>
+
+          <ModalBody>
+            <FormGroup>
+              <label>
+                Id: 
+              </label>
+              
+              <input
+                className="form-control"
+                readOnly
+                type="text"
+                value={this.state.data.length+1}
+              />
+            </FormGroup>
+            
+            <FormGroup>
+              <label>
+                Usuario: 
+              </label>
+              <input
+                className="form-control"
+                name="nombre"
+                type="text"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <label>
+                Rol: 
+              </label>
+              <input
+                className="form-control"
+                name="rol"
+                type="text"
+                onChange={this.handleChange}
+              />
+            </FormGroup> 
+
+            <FormGroup>
+              <label>
+                Correo: 
+              </label>
+              <input
+                className="form-control"
+                name="correo"
+                type="text"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button
+              color="info"
+              onClick={() => this.insertar()}
+            >
+              Insertar
+            </Button>
+            <Button
+              className="btn btn-danger"
+              onClick={() => this.cerrarModalInsertar()}
+            >
+              Cancelar
+            </Button>
+          </ModalFooter>
+        </Modal>       
         </div>
+        <Footer value={{ background: '#D0A2FE' }} />
+      </div>
     )
 
+}
 }
 
     export default Users;
