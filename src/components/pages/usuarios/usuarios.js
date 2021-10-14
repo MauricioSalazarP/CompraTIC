@@ -1,24 +1,13 @@
 import React from 'react';
 import "./usuarios.css"
 import Footer from '../../navegacion/Footer/Footer';
-import Navbar1 from '../../navegacion/Navbar/Navbar1'
+import Nav2 from '../../navegacion/Navbar/nav2';
 
 
 const Users = () => {
     return (
         <div>
-            <Navbar1 value={{ background: '##D0A2FE' }} 
-            attribute={{
-                nombre1: 'ADMON',
-                nombre2: 'VENTAS',
-                nombre3: 'PRODUCTOS',
-                nombre4: 'Cancelar',
-                to1: '/login',
-                to2: '/inicio',
-                to3: '/inicio',
-                to4: '/inicio',
-            }}/>
-
+            <Nav2/>    
             <section class="sample one">
                 <input type="text" name="search" placeholder="search"/>
                 <button type="submit" class="btn btn-search fa fa-search"></button>
@@ -92,3 +81,6 @@ const Users = () => {
 }
 
     export default Users;
+
+
+
