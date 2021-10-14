@@ -1,68 +1,42 @@
 import React from 'react';
 import "./usuarios.css"
 import Footer from '../../navegacion/Footer/Footer';
-import Nav2 from '../../navegacion/Navbar/nav2';
-import $ from "jquery"
-
+import Navbar1 from '../../navegacion/Navbar/Navbar1';
+import { Link } from 'react-router-dom'
 
 
 const Users = () => {
-    $(Document).ready(function() {
-
-        $("tr:first-child").append('<th class="actionsCol" contenteditable="false">Actions</th>');
-        $("tr:not(:first-child)").append('<td class="finalActionsCol"><i class="fa fa-plus-circle" aria-hidden="true"></i> <i class="fa fa-minus-circle" aria-hidden="true"></i> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </td>');
-      
-        $("table").on("click", ".fa-plus-circle", function() {
-          $(this).closest('tr').after('<tr><td class="idRow" contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td class="finalActionsCol"><i class="fa fa-plus-circle" aria-hidden="true"></i> <i class="fa fa-minus-circle" aria-hidden="true"></i> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </td></tr>');
-        });
-      
-        $("#addRow").on("click", function() {
-          $("table").append('<tr><td class="idRow" contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td contenteditable="false">-</td><td class="finalActionsCol"><i class="fa fa-plus-circle" aria-hidden="true"></i> <i class="fa fa-minus-circle" aria-hidden="true"></i> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </td></tr>');
-        });
-      
-        $("table").on("click", ".fa-minus-circle", function() {
-          if (prompt("Estas seguro de Borrar el Usuario? escribe 'y' para confirmar") === "y") {
-            $(this).closest('tr').remove();
-          } else {}
-        });
-      
-        $("table").on("click", ".fa-pencil-square-o, .fa-floppy-o", function() {
-          var thisRow = $(this).parent().siblings();
-          var editOn = $(this).hasClass("editMode");
-      
-          $('td:last-child').attr('contenteditable', 'false');
-          $('td:last-child').css('background-color', 'transparent');
-      
-          if (editOn === false) {
-            $(thisRow).attr('contenteditable', 'true');
-            $(thisRow).css('background-color', '#ffc9c9');
-            $(this).removeClass("fa-pencil-square-o");
-            $(this).addClass("fa-floppy-o editMode");
-          } else if (editOn === true) {
-            $(thisRow).attr('contenteditable', 'false');
-            $(thisRow).css('background-color', 'transparent');
-            $(this).removeClass("fa-floppy-o editMode");
-            $(this).addClass("fa-pencil-square-o");
-          }
-        });
-      
-        $('th', this).dblclick(function() {
-          $(this).attr("contenteditable", "true");
-        });
-        $('th', this).mouseout(function() {
-          $(this).attr("contenteditable", "false");
-        });
-      
-      });
-    
-
     return (
         <div>
-            <Nav2/>    
-            <section class="sample one">
-                <input type="text" name="search" placeholder="search"/>
-                <button type="submit" class="btn btn-search fa fa-search"></button>
-            </section>
+            <div>
+            <Navbar1 value={{ background: '#D0A2FE' }} 
+            attribute={{
+                nombre1: 'VENTAS',
+                nombre2: 'PRODUCTOS',
+                nombre3: 'USUARIOS',
+                nombre4: 'Cerrar Sesion',
+                to1: '/ventasAdmin',
+                to2: '/productoAdmin',
+                to3: '/usuariosAdmin',
+                to4: '/',
+            }}/>  
+            </div>
+              
+            <div className="sample one horizontal caja1">
+
+        <input type="text" name="search" placeholder="search"/>
+        
+      </div>
+      <div className="dropdown horizontal caja2">
+          <button className="algo btn btn-success btn-search btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Consulta
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><Link className="dropdown-item" to="#">Identificador de la venta</Link></li>
+            <li><Link className="dropdown-item" to="#">ID del cliente</Link></li>
+            <li><Link className="dropdown-item" to="#">Nombre del cliente</Link></li>
+          </div>
+        </div>
             
 
             <div class="container">
@@ -125,7 +99,7 @@ const Users = () => {
                 
                 <button id="addRow">Crear Usuario</button>
             </div>
-            <Footer value={{ background: '##D0A2FE' }} />
+            <Footer value={{ background: '#D0A2FE' }} />
         </div>
     )
 
