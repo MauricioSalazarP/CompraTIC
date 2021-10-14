@@ -3,8 +3,8 @@
     margin: 0px;
     font-family: 'segoe ui';
   }
-  table {
-    background-color: #42414175;
+  .plis table {
+    background-color: #e70a0a75;
 
   }
   tbody tr:nth-child(odd) {
@@ -143,8 +143,8 @@
     ;
   }
   
-  th,
-  td {
+  .plis th,
+  .plis td {
     width: auto;
     min-width: 25px;
     border-bottom: 1px solid #BAFFFB;
@@ -158,17 +158,17 @@
     border-bottom: 0px;
   }
   
-  th:last-child,
-  td:last-child {
+  .plis th:last-child,
+  .plis td:last-child {
     border-right: 0px;
   }
   
-  th:hover {
+  .plis th:hover {
     background-color: #9bc8ff;
     cursor: default;
   }
   
-  td:hover {
+  .plis td:hover {
     background-color: #BAFFFB;
   }
   
@@ -190,7 +190,7 @@
     background-color: transparent;
   }
   
-  th:hover::after {
+  .plis th:hover::after {
     content: "";
     position: absolute;
     background-color: #e5f6ff;
@@ -266,7 +266,15 @@
     margin-top: 10px;
 }
 
-
+/* .sample.one input {
+  border-radius: 15px;
+  right: 38%;
+  transition: all .3s ease-in-out;
+  width: 25%;
+  border-color: #c8b2df;
+  padding: 8px;
+  margin-top: 10px;
+} */
 
 #addRow {
     color: #000000;

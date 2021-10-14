@@ -19,7 +19,7 @@ const App = () => {
         <Route path='/ventasAdmin' exact component={VentasAdmin}/>
         <Route path='/' exact component={Inicio}/>
         <Route path='/inicio' exact component={Inicio}/>
-        <Route path='/Users' exact component={Usuarios}/>
+        <Route path='/usuariosAdmin' exact component={Usuarios}/>
       </Switch>  
     </Router>    
   );

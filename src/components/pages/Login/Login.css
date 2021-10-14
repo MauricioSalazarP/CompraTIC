@@ -119,7 +119,7 @@
     align-items: center;
   }
   
-  .btn {
+  .btn0 {
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
@@ -139,7 +139,7 @@
     transition: 0.5s;
   }
   
-  .btn:hover {
+  .btn0:hover {
     background-position: right;
   }
   

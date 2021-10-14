@@ -39,7 +39,7 @@ const VentasUser = () => {
         </div>
       
 
-      <div className="container">
+      <div className="container plis">
         <table className="tableContents">
           <tr>
             <th id="IDCol">Id venta</th>
