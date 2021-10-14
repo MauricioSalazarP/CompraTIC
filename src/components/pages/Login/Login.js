@@ -13,9 +13,9 @@ const Login = () => {
                 nombre3: 'PRODUCTOS',
                 nombre4: 'Cancelar',
                 to1: '/login',
-                to2: '/inicio',
-                to3: '/inicio',
-                to4: '/inicio',
+                to2: '/ventasUser',
+                to3: '/ventasAdmin',
+                to4: '/',
             }}/>
             <section className='seccion-login'>
                 <article className="contenedor">

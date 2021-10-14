@@ -30,7 +30,7 @@ const Navbar1 = ({ value, attribute }) => {
                   <Link className="nav-link inicio" to={attribute.to3}>{attribute.nombre3}</Link>
               </li>
               <li className="nav-item">
-                  <Link className="nav-link inicio" to={attribute.to4}>{attribute.nombre4}</Link>
+                  <Link className="nav-link" to={attribute.to4}>{attribute.nombre4}</Link>
               </li>
               
               

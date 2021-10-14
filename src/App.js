@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Login from './components/pages/Login/Login';
 import Inicio from './components/pages/Inicio/Inicio';
+import VentasUser from './components/pages/VentasUser/VentasUser';
+import VentasAdmin from './components/pages/VentasAdmin/VentasAdmin';
 
 
 const App = () => {
@@ -10,11 +12,11 @@ const App = () => {
     <Router>
       <Switch>
         <Route path='/login' exact component={Login}/>
-        <Route path='/inicio' exact component={Inicio}/>
+        <Route path='/ventasUser' exact component={VentasUser}/>
+        <Route path='/ventasAdmin' exact component={VentasAdmin}/>
+        <Route path='/' exact component={Inicio}/>
       </Switch>  
-    </Router>
-    
-    
+    </Router>    
   );
 }
 
