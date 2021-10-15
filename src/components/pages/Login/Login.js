@@ -13,9 +13,9 @@ const Login = () => {
                 nombre3: 'PRODUCTOS',
                 nombre4: 'Cancelar',
                 to1: '/login',
-                to2: '/inicio',
-                to3: '/inicio',
-                to4: '/inicio',
+                to2: '/ventasUser',
+                to3: '/usuariosAdmin',
+                to4: '/',
             }}/>
             <section className='seccion-login'>
                 <article className="contenedor">
@@ -41,7 +41,7 @@ const Login = () => {
                             </div>      
                             <div className="botones">
                                 <input type="submit" class="btn1" value="INGRESAR" />
-                                <input type="submit" class="btn" value="Ingresar Con Gmail" />
+                                <input type="submit" class="btn0" value="Ingresar Con Gmail" />
                             </div>          
                         </form>
                     </div>

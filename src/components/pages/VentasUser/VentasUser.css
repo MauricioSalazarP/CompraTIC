@@ -3,11 +3,34 @@
     margin: 0px;
     font-family: 'segoe ui';
   }
- 
-  .nav  {
+  .plis table {
+    background-color: #e70a0a75;
+
+  }
+  tbody tr:nth-child(odd) {
+    background-color: #aed7e3;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #7dc1d6;
+  }
+  .horizontal{
+    padding-top: 5%;
+    width:23.33%;
+    height:5%;
+    float:left;
+  }
+  .caja1{
+    padding-left: 7%;
+  }
+  .caja2{
+    padding-top: 6%;
+    padding-left:0px;
+  }
+  /* .nav  {
     height: 50px;
     width: 100%;
-    background-color: #D0A2FE;
+    background-color: #BAFFFB;
     position: relative;
   }
   
@@ -18,7 +41,7 @@
   .nav > .nav-header > .nav-title {
     display: inline-block;
     font-size: 22px;
-    color: #fff;
+    color: #000000;
     padding: 10px 10px 10px 10px;
   }
   
@@ -36,7 +59,7 @@
     display: inline-block;
     padding: 13px 10px 13px 10px;
     text-decoration: none;
-    color: #efefef;
+    color: #000000;
   }
   
   .nav > .nav-links > a:hover {
@@ -45,9 +68,9 @@
   
   .nav > #nav-check {
     display: none;
-  }
+  } */
   
-  @media (max-width:600px) {
+  /* @media (max-width:600px) {
     .nav > .nav-btn {
       display: inline-block;
       position: absolute;
@@ -91,12 +114,13 @@
       height: calc(100vh - 50px);
       overflow-y: auto;
     }
-  }
+  } */
 
   .container {
     overflow-x: auto;
     height: auto;
-    padding: 25px;
+    padding: 35px;
+    padding-left: 23%;
     position: relative;
     text-align: start;
     margin-left: auto;
@@ -111,7 +135,7 @@
   .tableContents {
     min-width: 70%;
     min-height: 80%;
-    border: 2px solid #D0A2FE;
+    border: 2px solid #BAFFFB;
     overflow: hidden;
     text-align: center;
     border-collapse: seperate/*collapse*/
@@ -119,12 +143,12 @@
     ;
   }
   
-  th,
-  td {
+  .plis th,
+  .plis td {
     width: auto;
     min-width: 25px;
-    border-bottom: 1px solid #D0A2FE;
-    border-right: 1px solid #D0A2FE;
+    border-bottom: 1px solid #BAFFFB;
+    border-right: 1px solid #BAFFFB;
     text-align: center;
     padding: 5px 10px;
     position: relative;
@@ -134,22 +158,22 @@
     border-bottom: 0px;
   }
   
-  th:last-child,
-  td:last-child {
+  .plis th:last-child,
+  .plis td:last-child {
     border-right: 0px;
   }
   
-  th:hover {
+  .plis th:hover {
     background-color: #9bc8ff;
     cursor: default;
   }
   
-  td:hover {
-    background-color: #c8b2df;
+  .plis td:hover {
+    background-color: #BAFFFB;
   }
   
   .finalActionsCol:hover {
-    background-color: #9bc8ff;
+    background-color: #BAFFFB;
   }
   
   
@@ -166,7 +190,7 @@
     background-color: transparent;
   }
   
-  th:hover::after {
+  .plis th:hover::after {
     content: "";
     position: absolute;
     background-color: #e5f6ff;
@@ -219,41 +243,43 @@
     box-sizing: border-box;
   }
   
-
+/* 
   footer {
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
     padding: 1rem;
-    background-color: #D0A2FE;
+    background-color: #BAFFFB;
     text-align: center;
-    text-decoration-color: #e4d4f5;
-  }
+    text-decoration-color: #BAFFFB;
+  } */
 
   
 .sample.one input {
     border-radius: 15px;
     right: 38%;
     transition: all .3s ease-in-out;
-    width: 25%;
-    border-color: #c8b2df;
+    width: 90%;
+    border-color: #BAFFFB;
     padding: 8px;
     margin-top: 10px;
 }
 
+/* .sample.one input {
+  border-radius: 15px;
+  right: 38%;
+  transition: all .3s ease-in-out;
+  width: 25%;
+  border-color: #c8b2df;
+  padding: 8px;
+  margin-top: 10px;
+} */
 
-.btn-search {
-    color: #eb85e6;
-    background-color: #c8b2df00;
-    border: none;
-    size: 30px;
-    
-}
 #addRow {
-    color: #eb85e6;
-    background-color: #c8b2df91;
-    border: #eb85e6 ;
+    color: #000000;
+    background-color: #BAFFFB;
+    border: #BAFFFB ;
     font-size: large;
     border-radius: 10px;
     transition-duration: 0.3s;
@@ -262,9 +288,9 @@
 }
 
 #addRow:hover {
-    color: #a41ee2;
-    background-color: #9b5cdf91;
-    box-shadow: 1px 5px #e4d4f5;
+    color: #0c635e;
+    background-color: #b1cfce;
+    box-shadow: 1px 5px #3f5a59;
     cursor: pointer;
     
 }
