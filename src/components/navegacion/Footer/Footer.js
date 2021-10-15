@@ -1,6 +1,6 @@
 import React from 'react'
 import './Footer.css';
-import compra from "../../../../src/assets/images/logo1.png"; 
+import compra from "../../../../src/assets/images/logo3.png"; 
 
 const Footer = ({ value }) => {
     

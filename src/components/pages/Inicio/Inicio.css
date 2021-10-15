@@ -1,3 +1,4 @@
+
 .portfolio #portfolio-flters li:last-child {
     margin-right: 0;
   }
@@ -86,3 +87,8 @@
     font-weight: 600;
   }
   
+  img-fluid {
+
+    max-width:  80%;
+    max-height: 180px;
+  }

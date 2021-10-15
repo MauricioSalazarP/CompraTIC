@@ -1,7 +1,7 @@
 import React from 'react'
 import './Navbar.css'
-import Logo from '../../../assets/images/las-compras-en-linea.png'
 import { Link } from 'react-router-dom'
+import logo from "../../../../src/assets/images/logo1.png"; 
 
 
 const Navbar1 = ({ value, attribute }) => {
@@ -11,11 +11,12 @@ const Navbar1 = ({ value, attribute }) => {
           <div className="collapse navbar-collapse" id="navbarsExample03">
            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <ul className="navbar-nav navbar-left">
-                  <li className="nav-item">
-                      <Link to="#"> 
-                        <h2 className="nav-link compratic">CompraTic</h2>
-                        <img  alt = "" src={Logo} className="img" />
-                      </Link>
+                  <li className="nav-item2">
+                     
+                      <img  className = "logo2"
+                          src = {logo}
+                      /> 
+                    
                       
                   </li>
                   
