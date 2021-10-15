@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../../navegacion/Footer/Footer';
 import Navbar1 from '../../navegacion/Navbar/Navbar1'
+import logo3 from "../../../../src/assets/images/logo3.png"; 
 import './Login.css';
 
 const Login = () => {
@@ -21,8 +22,9 @@ const Login = () => {
                 <article className="contenedor">
                     <div className="contenido-login">
                         <form action=" ">
-                            <img src="imagen/carro.png" alt="" />
-                            <h2>CompraTic</h2>
+                        <img 
+                            src = {logo3}
+                        /> 
                             <div className="input-div usuario">
                                 <div className="i">
                                     <i className="fas fa-user"></i>

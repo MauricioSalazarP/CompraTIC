@@ -1,5 +1,5 @@
 .seccion-login {
-    position: relative;
+    position: absolute;
     width: 50vw;
     height: 70vh;
     left: 25vw;
@@ -9,6 +9,13 @@
     border-radius: 20px;
   }
   
+ form img {
+    margin: 1px;
+    background-color: rgba(50, 186, 204, 0.418);
+    padding: 15px;
+    border-radius: 10px;
+
+  }
   
   .contenedor {
     display: flex;

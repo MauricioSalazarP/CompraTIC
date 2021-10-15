@@ -2,6 +2,10 @@ import React from 'react'
 import Footer from '../../navegacion/Footer/Footer';
 import Navbar1 from '../../navegacion/Navbar/Navbar1'
 import './Inicio.css'
+import compu from  "../../../assets/images/computer.png"
+import diadema from  "../../../assets/images/diademas.png"
+import soft from  "../../../assets/images/software.png"
+import hdd from  "../../../assets/images/discodur.png"
 
 const productImages = require.context('../../../assets/images', true)
 
@@ -25,7 +29,7 @@ const Inicio = () => {
                     <div className="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
                         <div className="col-lg-3 col-md-6 portfolio-item filter-app">
                             <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
-                                <img src={ productImages('./computer.png') } className="img-fluid" alt="" />
+                                <img src={ compu } alt="imagen de computador" />
                             </div>
                             <div className="portfolio-info">
                                 <h4>Computadores</h4>
@@ -35,7 +39,7 @@ const Inicio = () => {
             
                         <div className="col-lg-3 col-md-6 portfolio-item filter-web">
                             <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
-                                <img src={ productImages('./diademas.png') } className="img-fluid" alt="" />
+                                <img src={ diadema } className="img-fluid" alt="imagen de diademas" />
                             </div>
                             <div className="portfolio-info">
                                 <h4>Diademas</h4>
@@ -45,7 +49,7 @@ const Inicio = () => {
 
                         <div className="col-lg-3 col-md-6 portfolio-item filter-web">
                             <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
-                                <img src={ productImages('./software.png') } className="img-fluid" alt="" />
+                                <img src={ soft } className="img-fluid" alt="imagen de software" />
                             </div>
                             <div className="portfolio-info">
                                 <h4>Software</h4>
@@ -55,7 +59,7 @@ const Inicio = () => {
 
                         <div className="col-lg-3 col-md-6 portfolio-item filter-web">
                             <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
-                                <img src={ productImages('./discodur.png') } className="img-fluid" alt="" />
+                                <img src={ hdd } className="img-fluid" alt="imagen de hdd" />
                             </div>
                             <div className="portfolio-info">
                                 <h4>Disco Duro</h4>
