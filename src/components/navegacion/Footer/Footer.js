@@ -1,16 +1,19 @@
 import React from 'react'
 import './Footer.css';
+import compra from "../../../../src/assets/images/logo1.png"; 
 
 const Footer = ({ value }) => {
     
     console.log({value})
-    // const divStyle = {
-    //     backgroundImage: 'url(' + imgUrl + ')',
-    //   };
+ //    const divStyle = {
+ //        backgroundImage: 'url(' + './public/CompraTICLogoNegroMorA' + ')',
+ //      };
     
     return (
         <footer style={value}>
-            <h5>CompraTic 2021</h5>
+            <img 
+            src = {compra}
+            /> 
         </footer>
     )
 }
