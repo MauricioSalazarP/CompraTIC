@@ -127,7 +127,7 @@ class VentasAdmin extends React.Component {
                 nombre3: 'USUARIOS',               
                 nombre4: 'Cerrar Sesion',
                 to1: '/ventasAdmin',
-                to2: '/productosUser',
+                to2: '/productosAdmin',
                 to3: '/usuariosAdmin',
                 to4: '/',
             }}/>  

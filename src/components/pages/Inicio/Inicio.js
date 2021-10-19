@@ -6,6 +6,7 @@ import compu from  "../../../assets/images/computer.png"
 import diadema from  "../../../assets/images/diademas.png"
 import soft from  "../../../assets/images/software.png"
 import hdd from  "../../../assets/images/discodur.png"
+import videojuegos from  "../../../assets/images/videojuegos.png"
 
 const productImages = require.context('../../../assets/images', true)
 
