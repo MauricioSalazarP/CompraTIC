@@ -11,7 +11,7 @@ const Login = () => {
             attribute={{
                 nombre1: 'LOGIN',
                 nombre2: 'VENTAS',
-                nombre3: 'PRODUCTOS',
+                nombre3: 'USUARIOS',
                 nombre4: 'Cancelar',
                 to1: '/login',
                 to2: '/ventasUser',
@@ -23,7 +23,7 @@ const Login = () => {
                     <div className="contenido-login">
                         <form action=" ">
                         <img 
-                            src = {logo3}
+                           src = {logo3}
                         /> 
                             <div className="input-div usuario">
                                 <div className="i">

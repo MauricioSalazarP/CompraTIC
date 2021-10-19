@@ -1,9 +1,10 @@
 import React from 'react';
-import "./usuarios.css"
+import "./usuarios.css";
 import Footer from '../../navegacion/Footer/Footer';
 import Navbar1 from '../../navegacion/Navbar/Navbar1';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import {
   Table,
   Button,
@@ -14,6 +15,7 @@ import {
   FormGroup,
   ModalFooter,
 } from "reactstrap";
+
 
 const data = [
   { id: 1, nombre: "Mauricio", rol: "Administrador", correo: "mauricio@compratic.com"   },
@@ -113,13 +115,14 @@ class Users extends React.Component {
                 nombre4: 'Cerrar Sesion',
                 to1: '/usuariosAdmin',
                 to2: '/ventasAdmin',
-                to3: '/productoAdmin',
+                to3: '/productosAdmin',
                 to4: '/',
             }}/>  
         </div>  
 
         <div className="sample one horizontal caja1">
-                <input type="text" name="search" placeholder="search"/>       
+                <input type="text" name="search" placeholder="search"/>   
+
         </div>
 
         <div className="dropdown horizontal caja2">
@@ -132,8 +135,7 @@ class Users extends React.Component {
             <li><Link className="dropdown-item" to="#">Rol</Link></li>
           </div>
         </div>
-        
-            
+
 
         <div class="container">              
         <Container>
