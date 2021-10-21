@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD:Frontend/package.json
   "name": "compratic",
   "version": "0.1.0",
   "private": true,
@@ -27,16 +26,12 @@
     "reactstrap": "^8.10.0",
     "web-vitals": "^1.1.2"
   },
-=======
-  "name": "ecommerceapi",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
->>>>>>> main:package.json
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-<<<<<<< HEAD:Frontend/package.json
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -57,19 +52,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.13"
-=======
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "crypto-js": "^4.1.1",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.5",
-    "nodemon": "^2.0.12",
-    "stripe": "^8.174.0"
->>>>>>> main:package.json
   }
 }
