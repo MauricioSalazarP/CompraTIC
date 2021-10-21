@@ -19,7 +19,7 @@ const App = () => {
         <Route path='/ventasUser' exact component={VentasUser}/>
         <Route path='/ventasAdmin' exact component={VentasAdmin}/>
         <Route path='/' exact component={Login}/>
-        <Route path='/inicio' exact component={Login}/>
+        <Route path='/inicio' exact component={Inicio}/>
         <Route path='/usuariosAdmin' exact component={Usuarios}/>
         <Route path='/productosUser' exact component={productosUser}/>
         <Route path='/productosAdmin' exact component={productosAdmin}/>
