@@ -31,7 +31,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 //UPDATE ROLE TO ADMINISTRATOR
-router.put("/role/:id", verifyTokenAndAuthorization, async (req, res) => {
+router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   if (req.body.password) {
     req.body.password = CryptoJS.AES.encrypt(
       req.body.password,
@@ -63,7 +63,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+ 
 //GET USER
 router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
