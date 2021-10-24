@@ -8,6 +8,7 @@ const { generarJWT } = require('../helpers/jwt');
 //REGISTER
 router.post("/register", async (req, res) => {
   const newUser = new User({
+    user_id: req.body.user_id,
     username: req.body.username,
     email: req.body.email,
     password: CryptoJS.AES.encrypt(

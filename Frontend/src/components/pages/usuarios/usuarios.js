@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import useAuth from '../../../hooks/useAuth';
 import { cargarUsuarios } from '../../../Services/usuarios.service';
+import { constants } from '../../../util/Constants';
+import axios from 'axios';
 import {
   Table,
   Button,
@@ -19,22 +21,22 @@ import {
 
 
 
-listarUsuarios = () => {
-   
-  const auth = useAuth();
+// listarUsuarios = () => {
 
-  const [usuarios, setUsuarios] = useState([]);
+ // const auth = useAuth();
 
-  const getUsuarios = async () => {
-    try {
-        const { data } = await cargarUsuarios(auth.token);
-        setUsuarios(data.usuarios);
+//   const [usuarios, setUsuarios] = useState([]);
 
-    } catch ({response: error}){
-      console.log(error);
-    }
-  }
-}
+//   const getUsuarios = async () => {
+//     try {
+//         const { data } = await cargarUsuarios(auth.token);
+//         setUsuarios(data.usuarios);
+
+//     } catch ({response: error}){
+//       console.log(error);
+//     }
+//   }
+// }
 
 class Users extends React.Component {
 
@@ -44,30 +46,28 @@ class Users extends React.Component {
     modalInsertar: false,
     status: false,
     form: {
-      _id: "",
+      user_id: "",
       username: "",
       rol: "",
       email: ""
     },
   };
 
-  // cargarUsuarios = () => {
-  //     var url = constants.pathApi;
-  //     var request = "/users"
-  //     axios.get(url + request).then(res => {
-  //         this.setState({
-  //           usuarios: res.data,
-  //           status: true
-  //         })
-  //         .cath(function(error){
-  //           console.log(error);
-  //         })
-  //     })
-  // }
+ componentDidMount = () => {
+    this.cargarUsuarios();
+  }
+  cargarUsuarios(){
+      var url = constants.pathApi;
+      var request = "/users"
+      fetch(url + request)
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            this.setState({usuarios: data});
+          })
+  }
 
-  // componentDidMount = () => {
-  //   this.cargarUsuarios();
-  // }
+ 
   mostrarModalActualizar = (dato) => {
     this.setState({
       form: dato,
@@ -93,7 +93,7 @@ class Users extends React.Component {
     var contador = 0;
     var arreglo = this.state.usuarios;
     arreglo.map((registro) => {
-      if (dato.id === registro.id) {
+      if (dato.user_id === registro.user_id) {
         arreglo[contador].nombre = dato.nombre;
         arreglo[contador].rol = dato.rol;
       }
@@ -108,7 +108,7 @@ class Users extends React.Component {
       var contador = 0;
       var arreglo = this.state.data;
       arreglo.map((registro) => {
-        if (dato.id === registro.id) {
+        if (dato.user_id === registro.user_id) {
           arreglo.splice(contador, 1);
         }
         contador++;
@@ -119,12 +119,12 @@ class Users extends React.Component {
 
   insertar = () => {
     var valorNuevo = { ...this.state.form };
-    valorNuevo.id = this.state.data.length + 1;
+    valorNuevo.user_id = this.state.data.length + 1;
     var lista = this.state.data;
     lista.push(valorNuevo);
     this.setState({ modalInsertar: false, usuarios: lista });
   }
-
+ 
   handleChange = (e) => {
     this.setState({
       form: {
@@ -185,10 +185,10 @@ class Users extends React.Component {
 
               <tbody>
 
-                {this.state.status === true && (
+                {this.state.status === false && (
                   this.state.usuarios.map((dato) => (
-                    <tr key={dato._id}>
-                      <td>{dato._id}</td>
+                    <tr key={dato.id}>
+                      <td>{dato.user_id}</td>
                       <td>{dato.username}</td>
                       <td>{dato.rol}</td>
                       <td>{dato.email}</td>
@@ -225,7 +225,7 @@ class Users extends React.Component {
                   className="form-control"
                   readOnly
                   type="text"
-                  value={this.state.form._id}
+                  value={this.state.form.user_id}
                 />
               </FormGroup>
 
