@@ -102,19 +102,27 @@ class Users extends React.Component {
     this.setState({ usuarios: arreglo, modalActualizar: false });
   };
 
+
+  // necesario cambiar token por el de el que se implemente con el login
   eliminar = (dato) => {
-    var opcion = window.confirm("Estás Seguro que deseas Eliminar el elemento " + dato.id);
-    if (opcion === true) {
-      var contador = 0;
-      var arreglo = this.state.data;
-      arreglo.map((registro) => {
-        if (dato.user_id === registro.user_id) {
-          arreglo.splice(contador, 1);
-        }
-        contador++;
-      });
-      this.setState({ usuarios: arreglo, modalActualizar: false });
-    }
+      if (window.confirm('Esta seguro de querer eliminar el Usuario')) {
+        var url = constants.pathApi;
+        var request = "/users/" + dato
+        fetch(url + request, {
+          method: 'DELETE',
+          headers: {
+            "accept": "aplication/json",
+            "content-Type": "aplication/json",
+            "token": "Bearer token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzVkNzJhNmUwMzU4ZTNmNzIwMDE5YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNTExODI3NywiZXhwIjoxNjM1Mzc3NDc3fQ.cnqviBnUc3oxQW13jHGfbJ3DOiiK7rZb_gZ7LCyxRcw"
+          }
+        })
+          .then(res => res.json())
+          .then(usuarios => {
+            this.cargarUsuarios();
+          })
+      }
+
+        
   };
 
   insertar = () => {
@@ -187,7 +195,7 @@ class Users extends React.Component {
 
                 {this.state.status === false && (
                   this.state.usuarios.map((dato) => (
-                    <tr key={dato.id}>
+                    <tr key={dato._id}>
                       <td>{dato.user_id}</td>
                       <td>{dato.username}</td>
                       <td>{dato.rol}</td>
@@ -199,7 +207,7 @@ class Users extends React.Component {
                         >
                           Editar
                         </Button>{" "}
-                        <Button color="danger" onClick={() => this.eliminar(dato)}>Eliminar</Button>
+                        <Button color="danger" onClick={() => this.eliminar(dato._id)}>Eliminar</Button>
                       </td>
                     </tr>
                   ))

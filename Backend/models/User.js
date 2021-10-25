@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema(
       ref: 'Rol',
       required: true,
       //** ID del rol de "Indefinido" (sacado directamente de la base de datos) */
-      default: '616ae58281481faff2532920'
+      default: 'Vendedor'
   },
 
     img: { type: String },
