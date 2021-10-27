@@ -194,9 +194,9 @@ class Users extends React.Component {
               <tbody>
 
                 {this.state.status === false && (
-                  this.state.usuarios.map((dato) => (
+                  this.state.usuarios.map((dato, index) => (
                     <tr key={dato._id}>
-                      <td>{dato.user_id}</td>
+                      <th scope="row">{index + 1}</th>
                       <td>{dato.name}</td>
                       <td>{dato.rol}</td>
                       <td>{dato.email}</td>
@@ -243,7 +243,7 @@ class Users extends React.Component {
                 </label>
                 <input
                   className="form-control"
-                  name="nombre"
+                  name="name"
                   type="text"
                   onChange={this.handleChange}
                   value={this.state.form.name}
@@ -256,10 +256,23 @@ class Users extends React.Component {
                 </label>
                 <input
                   className="form-control"
-                  name="correo"
+                  name="email"
                   type="text"
                   onChange={this.handleChange}
                   value={this.state.form.email}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <label>
+                  Rol:
+                </label>
+                <input
+                  className="form-control"
+                  name="rol"
+                  type="text"
+                  onChange={this.handleChange}
+                  value={this.state.form.rol}
                 />
               </FormGroup>
             </ModalBody>
