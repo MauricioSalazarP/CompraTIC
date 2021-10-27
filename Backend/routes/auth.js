@@ -67,7 +67,7 @@ router.post('/google/login', validarGoogle, async (req, resp = response) => {
       email, 
       idToken
     });
-    
+    console.log(usuario);
     if(usuario) {
       const token = await generarJWT(usuario.id, usuario.name);
       resp.json({
