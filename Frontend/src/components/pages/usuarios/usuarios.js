@@ -126,12 +126,29 @@ class Users extends React.Component {
   };
 
   insertar = () => {
+    
+    var url = constants.pathApi;
+    var request = "/auth/register" 
     var valorNuevo = { ...this.state.form };
-    valorNuevo.user_id = this.state.data.length + 1;
-    var lista = this.state.data;
+    var lista = this.state.usuarios;
+    valorNuevo.user_id = this.state.usuarios.length + 1;
+    this.state.form.user_id = valorNuevo.user_id ;
     lista.push(valorNuevo);
     this.setState({ modalInsertar: false, usuarios: lista });
-  }
+    console.log(JSON.stringify(this.state.form),)
+    fetch(url + request, {
+      method: "POST",
+      body: JSON.stringify(this.state.form),
+      headers: {
+        "accept": "aplication/json",
+        "content-Type": "aplication/json"
+      }
+      
+    })
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
+    
+  };
  
   handleChange = (e) => {
     this.setState({
@@ -175,7 +192,7 @@ class Users extends React.Component {
         </div>
 
 
-        <div class="container">
+        <div className="container">
           <Container>
 
             <br />
