@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./usuarios.css";
 import Footer from '../../navegacion/Footer/Footer';
 import Navbar1 from '../../navegacion/Navbar/Navbar1';
 import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import useAuth from '../../../hooks/useAuth';
+import { cargarUsuarios } from '../../../Services/usuarios.service';
+import { constants } from '../../../util/Constants';
+import axios from 'axios';
 import {
   Table,
   Button,
@@ -17,27 +20,54 @@ import {
 } from "reactstrap";
 
 
-const data = [
-  { id: 1, nombre: "Mauricio", rol: "Administrador", correo: "mauricio@compratic.com"   },
-  { id: 2, nombre: "James", rol: "Vendedor", correo: "james@compratic.com" },
-  { id: 3, nombre: "Hector", rol: "Administrador", correo: "hector@compratic.com" },
-  { id: 4, nombre: "Diego", rol: "Vendedor", correo: "diego@compratic.com" },
-  { id: 5, nombre: "Jair", rol: "vendedor", correo : "jair@compratic.com"},
-  { id: 6, nombre: "edinson", rol: "Administrador", correo : "jair@mintic.com" },
-];
+
+// listarUsuarios = () => {
+
+ // const auth = useAuth();
+
+//   const [usuarios, setUsuarios] = useState([]);
+
+//   const getUsuarios = async () => {
+//     try {
+//         const { data } = await cargarUsuarios(auth.token);
+//         setUsuarios(data.usuarios);
+
+//     } catch ({response: error}){
+//       console.log(error);
+//     }
+//   }
+// }
 
 class Users extends React.Component {
+
   state = {
-    data: data,
+    usuarios: [],
     modalActualizar: false,
     modalInsertar: false,
+    status: false,
     form: {
-      id: "",
-      nombre: "",
+      user_id: "",
+      username: "",
       rol: "",
+      email: ""
     },
   };
 
+ componentDidMount = () => {
+    this.cargarUsuarios();
+  }
+  cargarUsuarios(){
+      var url = constants.pathApi;
+      var request = "/users"
+      fetch(url + request)
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            this.setState({usuarios: data});
+          })
+  }
+
+ 
   mostrarModalActualizar = (dato) => {
     this.setState({
       form: dato,
@@ -61,40 +91,48 @@ class Users extends React.Component {
 
   editar = (dato) => {
     var contador = 0;
-    var arreglo = this.state.data;
+    var arreglo = this.state.usuarios;
     arreglo.map((registro) => {
-      if (dato.id === registro.id) {
+      if (dato.user_id === registro.user_id) {
         arreglo[contador].nombre = dato.nombre;
         arreglo[contador].rol = dato.rol;
       }
       contador++;
     });
-    this.setState({ data: arreglo, modalActualizar: false });
+    this.setState({ usuarios: arreglo, modalActualizar: false });
   };
 
+
+  // necesario cambiar token por el de el que se implemente con el login
   eliminar = (dato) => {
-    var opcion = window.confirm("Estás Seguro que deseas Eliminar el elemento "+dato.id);
-    if (opcion === true) {
-      var contador = 0;
-      var arreglo = this.state.data;
-      arreglo.map((registro) => {
-        if (dato.id === registro.id) {
-          arreglo.splice(contador, 1);
-        }
-        contador++;
-      });
-      this.setState({ data: arreglo, modalActualizar: false });
-    }
+      if (window.confirm('Esta seguro de querer eliminar el Usuario')) {
+        var url = constants.pathApi;
+        var request = "/users/" + dato
+        fetch(url + request, {
+          method: 'DELETE',
+          headers: {
+            "accept": "aplication/json",
+            "content-Type": "aplication/json",
+            "token": "Bearer token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzVkNzJhNmUwMzU4ZTNmNzIwMDE5YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNTExODI3NywiZXhwIjoxNjM1Mzc3NDc3fQ.cnqviBnUc3oxQW13jHGfbJ3DOiiK7rZb_gZ7LCyxRcw"
+          }
+        })
+          .then(res => res.json())
+          .then(usuarios => {
+            this.cargarUsuarios();
+          })
+      }
+
+        
   };
 
-  insertar= ()=>{
-    var valorNuevo= {...this.state.form};
-    valorNuevo.id=this.state.data.length+1;
-    var lista= this.state.data;
+  insertar = () => {
+    var valorNuevo = { ...this.state.form };
+    valorNuevo.user_id = this.state.data.length + 1;
+    var lista = this.state.data;
     lista.push(valorNuevo);
-    this.setState({ modalInsertar: false, data: lista });
+    this.setState({ modalInsertar: false, usuarios: lista });
   }
-
+ 
   handleChange = (e) => {
     this.setState({
       form: {
@@ -103,32 +141,32 @@ class Users extends React.Component {
       },
     });
   };
-    render(){
+  render() {
     return (
+      <div>
         <div>
-            <div>
-            <Navbar1 value={{ background: '#D0A2FE' }} 
+          <Navbar1 value={{ background: '#D0A2FE' }}
             attribute={{
-                nombre1: 'USUARIOS',
-                nombre2: 'VENTAS',
-                nombre3: 'PRODUCTOS',               
-                nombre4: 'Cerrar Sesion',
-                to1: '/usuariosAdmin',
-                to2: '/ventasAdmin',
-                to3: '/productosAdmin',
-                to4: '/',
-            }}/>  
-        </div>  
+              nombre1: 'USUARIOS',
+              nombre2: 'VENTAS',
+              nombre3: 'PRODUCTOS',
+              nombre4: 'Cerrar Sesion',
+              to1: '/usuariosAdmin',
+              to2: '/ventasAdmin',
+              to3: '/productosAdmin',
+              to4: '/',
+            }} />
+        </div>
 
         <div className="sample one horizontal caja1">
-                <input type="text" name="search" placeholder="search"/>   
+          <input type="text" name="search" placeholder="search" />
 
         </div>
 
         <div className="dropdown horizontal caja2">
           <button className="algo btn btn-success btn-search btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Consulta
-        </button>
+            Consulta
+          </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><Link className="dropdown-item" to="#">ID Usuario</Link></li>
             <li><Link className="dropdown-item" to="#">Nombre</Link></li>
@@ -137,190 +175,192 @@ class Users extends React.Component {
         </div>
 
 
-        <div className="container">              
-        <Container>
+        <div class="container">
+          <Container>
 
-          <br />
-          <br />
-          <Table hover responsive bordered   value={{ background: '#D0A2FE' }}>
-            <thead>
-              <tr>
-                <th>ID Usuario</th>
-                <th>Nombre</th>
-                <th>Rol</th>
-                <th>Correo</th>
-                <th>Acción</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {this.state.data.map((dato) => (
-                <tr key={dato.id}>
-                  <td>{dato.id}</td>
-                  <td>{dato.nombre}</td>
-                  <td>{dato.rol}</td>
-                  <td>{dato.correo}</td> 
-                  <td>
-                    <Button
-                      color="secondary"
-                      onClick={() => this.mostrarModalActualizar(dato)}
-                    >
-                      Editar
-                    </Button>{" "}
-                    <Button color="danger" onClick={()=> this.eliminar(dato)}>Eliminar</Button>
-                  </td>
+            <br />
+            <br />
+            <Table hover responsive bordered value={{ background: '#D0A2FE' }}>
+              <thead>
+                <tr>
+                  <th>ID Usuario</th>
+                  <th>Nombre</th>
+                  <th>Rol</th>
+                  <th>Correo</th>
+                  <th>Acción</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-          <br />
-          <Button color="success" onClick={()=>this.mostrarModalInsertar()}>Crear Usuario</Button>
-        </Container>
+              </thead>
 
-        <Modal isOpen={this.state.modalActualizar}>
-          <ModalHeader>
-           <div><h3>Editar Registro</h3></div>
-          </ModalHeader>
+              <tbody>
 
-          <ModalBody>
-            <FormGroup>
-              <label>
-               Id:
-              </label>
-            
-              <input
-                className="form-control"
-                readOnly
-                type="text"
-                value={this.state.form.id}
-              />
-            </FormGroup>
-            
-            <FormGroup>
-              <label>
-                Usuario: 
-              </label>
-              <input
-                className="form-control"
-                name="nombre"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.form.nombre}
-              />
-            </FormGroup>
-            
-            <FormGroup>
-              <label>
-                Correo: 
-              </label>
-              <input
-                className="form-control"
-                name="correo"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.form.correo}
-              />
-            </FormGroup>
-          </ModalBody>
+                {this.state.status === false && (
+                  this.state.usuarios.map((dato) => (
+                    <tr key={dato._id}>
+                      <td>{dato.user_id}</td>
+                      <td>{dato.username}</td>
+                      <td>{dato.rol}</td>
+                      <td>{dato.email}</td>
+                      <td>
+                        <Button
+                          color="secondary"
+                          onClick={() => this.mostrarModalActualizar(dato)}
+                        >
+                          Editar
+                        </Button>{" "}
+                        <Button color="danger" onClick={() => this.eliminar(dato._id)}>Eliminar</Button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </Table>
+            <br />
+            <Button color="success" onClick={() => this.mostrarModalInsertar()}>Crear Usuario</Button>
+          </Container>
 
-          <ModalFooter>
-            <Button
-              color="info"
-              onClick={() => this.editar(this.state.form)}
-            >
-              Editar
-            </Button>
-            <Button
-              color="danger"
-              onClick={() => this.cerrarModalActualizar()}
-            >
-              Cancelar
-            </Button>
-          </ModalFooter>
-        </Modal>
+          <Modal isOpen={this.state.modalActualizar}>
+            <ModalHeader>
+              <div><h3>Editar Registro</h3></div>
+            </ModalHeader>
+
+            <ModalBody>
+              <FormGroup>
+                <label>
+                  Id:
+                </label>
+
+                <input
+                  className="form-control"
+                  readOnly
+                  type="text"
+                  value={this.state.form.user_id}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <label>
+                  Usuario:
+                </label>
+                <input
+                  className="form-control"
+                  name="nombre"
+                  type="text"
+                  onChange={this.handleChange}
+                  value={this.state.form.username}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <label>
+                  Correo:
+                </label>
+                <input
+                  className="form-control"
+                  name="correo"
+                  type="text"
+                  onChange={this.handleChange}
+                  value={this.state.form.email}
+                />
+              </FormGroup>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button
+                color="info"
+                onClick={() => this.editar(this.state.form)}
+              >
+                Editar
+              </Button>
+              <Button
+                color="danger"
+                onClick={() => this.cerrarModalActualizar()}
+              >
+                Cancelar
+              </Button>
+            </ModalFooter>
+          </Modal>
 
 
 
-        <Modal isOpen={this.state.modalInsertar}>
-          <ModalHeader>
-           <div><h3>Insertar Usuario</h3></div>
-          </ModalHeader>
+          <Modal isOpen={this.state.modalInsertar}>
+            <ModalHeader>
+              <div><h3>Insertar Usuario</h3></div>
+            </ModalHeader>
 
-          <ModalBody>
-            <FormGroup>
-              <label>
-                Id: 
-              </label>
-              
-              <input
-                className="form-control"
-                readOnly
-                type="text"
-                value={this.state.data.length+1}
-              />
-            </FormGroup>
-            
-            <FormGroup>
-              <label>
-                Usuario: 
-              </label>
-              <input
-                className="form-control"
-                name="nombre"
-                type="text"
-                onChange={this.handleChange}
-              />
-            </FormGroup>
+            <ModalBody>
+              <FormGroup>
+                <label>
+                  Id:
+                </label>
 
-            <FormGroup>
-              <label>
-                Rol: 
-              </label>
-              <input
-                className="form-control"
-                name="rol"
-                type="text"
-                onChange={this.handleChange}
-              />
-            </FormGroup> 
+                <input
+                  className="form-control"
+                  readOnly
+                  type="text"
+                  value={this.state.usuarios.length + 1}
+                />
+              </FormGroup>
 
-            <FormGroup>
-              <label>
-                Correo: 
-              </label>
-              <input
-                className="form-control"
-                name="correo"
-                type="text"
-                onChange={this.handleChange}
-              />
-            </FormGroup>
-          </ModalBody>
+              <FormGroup>
+                <label>
+                  Usuario:
+                </label>
+                <input
+                  className="form-control"
+                  name="nombre"
+                  type="text"
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
 
-          <ModalFooter>
-            <Button
-              color="info"
-              onClick={() => this.insertar()}
-            >
-              Insertar
-            </Button>
-            <Button
-              className="btn btn-danger"
-              onClick={() => this.cerrarModalInsertar()}
-            >
-              Cancelar
-            </Button>
-          </ModalFooter>
-        </Modal>       
+              <FormGroup>
+                <label>
+                  Rol:
+                </label>
+                <input
+                  className="form-control"
+                  name="rol"
+                  type="text"
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <label>
+                  Correo:
+                </label>
+                <input
+                  className="form-control"
+                  name="correo"
+                  type="text"
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button
+                color="info"
+                onClick={() => this.insertar()}
+              >
+                Insertar
+              </Button>
+              <Button
+                className="btn btn-danger"
+                onClick={() => this.cerrarModalInsertar()}
+              >
+                Cancelar
+              </Button>
+            </ModalFooter>
+          </Modal>
         </div>
         <Footer value={{ background: '#D0A2FE' }} />
+
       </div>
     )
 
+  }
 }
-}
 
-    export default Users;
-
-
+export default Users;
 

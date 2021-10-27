@@ -5,7 +5,7 @@ const generarJWT = (uid, name) => {
 
         const payload = {uid, name};
         jwt.sign(payload, process.env.PASS_SEC, {
-            expiresIn: '3d'
+            expiresIn: '100d'
         }, (err, token) => {
             if(err) {
                 console.log(err);
