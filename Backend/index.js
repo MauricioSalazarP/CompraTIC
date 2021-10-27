@@ -13,7 +13,7 @@ const cors = require("cors");
 dotenv.config();
 
 mongoose
-  .connect('mongodb://localhost/CompraTIC')
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("DB Connection Successfull!"))
   .catch((err) => {
     console.log(err);
