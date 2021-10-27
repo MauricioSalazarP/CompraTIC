@@ -47,7 +47,7 @@ class Users extends React.Component {
     status: false,
     form: {
       user_id: "",
-      username: "",
+      name: "",
       rol: "",
       email: ""
     },
@@ -197,7 +197,7 @@ class Users extends React.Component {
                   this.state.usuarios.map((dato) => (
                     <tr key={dato._id}>
                       <td>{dato.user_id}</td>
-                      <td>{dato.username}</td>
+                      <td>{dato.name}</td>
                       <td>{dato.rol}</td>
                       <td>{dato.email}</td>
                       <td>
@@ -246,7 +246,7 @@ class Users extends React.Component {
                   name="nombre"
                   type="text"
                   onChange={this.handleChange}
-                  value={this.state.form.username}
+                  value={this.state.form.name}
                 />
               </FormGroup>
 
