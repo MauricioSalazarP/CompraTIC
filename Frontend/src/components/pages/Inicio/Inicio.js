@@ -15,7 +15,7 @@ const Inicio = () => {
                 to2: '/login'
 
             }}/>
-            <section id="portfolio" classNameName="portfolio">
+            <section id="portfolio" className="portfolio">
                 <div className="container" data-aos="fade-up">
                     <div className="section-title">
                         <h3>Aquí encontrarás una muestra de nuestros <span>productos</span></h3>

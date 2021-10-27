@@ -8,7 +8,8 @@ const { generarJWT } = require('../helpers/jwt');
 //REGISTER
 router.post("/register", async (req, res) => {
   const newUser = new User({
-    // username: req.body.username,
+    user_id: req.body.user_id,
+    username: req.body.username,
     email: req.body.email,
     password: CryptoJS.AES.encrypt(
       req.body.password,
@@ -61,54 +62,52 @@ router.post("/login", async (req, res) => {
 router.post('/google/login', validarGoogle, async (req, resp = response) => {
 
   const {uid: idToken, name, email} = req;
-            
   try {
-      //** .populate trae los datos de esa llave */
-      let usuario = await User
-      .findOne({
-          email, 
-          idToken
+    let usuario = await User
+    .findOne({
+      email, 
+      idToken
+    });
+    console.log(usuario);
+    if(usuario) {
+      const token = await generarJWT(usuario.id, usuario.name);
+      resp.json({
+        ok: true,
+        msg: 'Ok',
+        uid: usuario.id,
+        name: usuario.name,
+        rol: usuario.rol,
+        token
+      });
+              
+    } else{
+      newUser = new User({
+        name,
+        email,
+        password: idToken,
+        idToken
+      });
+      const savedUser = await newUser.save();
+      resp.status(201).json({
+        ok: true,
+        msg: 'Usuario creado con exito',
+        uid: savedUser.id, 
+        name: savedUser.name,
+        rol: "Usuario"
       })
-      .populate('rol');
-      if(usuario) {
-          if(usuario.rol.name==='Indefinido'){
-              resp.status(401).json({
-                  ok: false,
-                  msg: 'Usuario no autorizado por el admin'
-              });
-          } else {
-              const token = await generarJWT(usuario.id, usuario.name);
-              resp.json({
-                  ok: true,
-                  msg: 'Ok',
-                  uid: usuario.id,
-                  name: usuario.name,
-                  token
-              });
-          }
-      } else{
-        newUser = new User({
-              name,
-              email,
-              password: idToken,
-              idToken
-          });
-          const savedUser = await newUser.save();
-          resp.status(201).json({
-            ok: true,
-            msg: 'Usuario creado con exito',
-            uid: savedUser.id,
-            name: savedUser.name,
-          })
-      }
-      
+    }
   } catch (error) {
-      
+    resp.status(500).json({
+      ok: false,
+      msg: 'error al autenticar',
+    });
   }
-  resp.json({
-      ok: true,
-      msg: "Google login exitoso"
-  });
+
+  // resp.json({
+  //   ok: true,
+  //   msg: "Google login exitoso",
+  //   rol: roluser.rol
+  // });
 });
 
 module.exports = router;

@@ -36,7 +36,6 @@ const validarGoogle = (req, res = response, next) => {
         })
         .then((resp) => {
             const {sub, name, email} = resp.payload;
-            console.log(sub, name, email);
             req.uid = sub;
             req.name = name;
             req.email = email;

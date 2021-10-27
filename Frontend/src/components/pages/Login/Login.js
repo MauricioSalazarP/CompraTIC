@@ -22,13 +22,25 @@ const Login = () => {
                 }
               });
               console.log(data);
+              console.log(data.rol);
             //   nombre = data.name;
             //   console.log(nombre)
-              data ? (
-                history.push("/inicio")
-              ) : (
-                history.push("/")
-              )        
+            //   data ? (
+            //     history.push("/inicio")
+            //   ) : (
+            //     history.push("/")
+            //   )
+            if(data.rol === "Administrador"){
+                history.push("/usuariosAdmin")
+            } else 
+                if (data.rol === "Vendedor"){
+                    history.push("/ventasUser")
+                } else 
+                    if (data.rol === "Usuario"){
+                        history.push("/inicio")
+                } else {
+                    history.push("/")
+                }
         }catch (error){
             console.log(error.toJSON());
             console.log(error.response.data);
